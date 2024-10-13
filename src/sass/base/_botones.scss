@@ -1,0 +1,42 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.boton {
+    @include m.boton(v.$login, .5rem, uppercase, v.$blanco);
+    margin: 1rem 0;
+    
+}
+
+.boton-crear {
+    @include m.boton(v.$login, .5rem, uppercase, v.$blanco, inline-block, 100%);
+    margin: 1rem 0;
+    @include m.tablet {
+        @include m.boton(v.$login, .5rem, uppercase, v.$blanco);
+    }
+    
+}
+
+.boton--block {
+    display: block;
+    width: 100%;
+}
+
+.boton--error {
+    @include m.boton(v.$error, .5rem, uppercase, v.$blanco);
+    margin: 1rem 0;
+}
+
+.boton-eliminar {
+    @include m.boton(v.$error, .5rem, uppercase, v.$blanco, inline-block, auto);
+    @include m.tablet {
+        @include m.boton(v.$error, .5rem, uppercase, v.$blanco, inline-block, 100%);
+    }
+}
+
+.boton-editar {
+    @include m.boton(yellow, .5rem, uppercase, v.$blanco, inline-block, auto);
+    margin-bottom: .5rem;
+    @include m.tablet {
+        @include m.boton(yellow, .5rem, uppercase, v.$blanco, inline-block, 100%);
+    }
+}

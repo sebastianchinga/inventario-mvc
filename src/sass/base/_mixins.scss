@@ -1,0 +1,40 @@
+@mixin telefono {
+    @media (min-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin flex($direction, $justify-content, $align-items, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    gap: $gap;
+}
+
+@mixin boton($bgColor, $padding, $transform, $color, $display: inline-block, $width: auto) {
+    background-color: $bgColor;
+    border: none;
+    padding: $padding;
+    text-transform: $transform;
+    color: $color;
+    text-align: center;
+    display: $display;
+    width: $width;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

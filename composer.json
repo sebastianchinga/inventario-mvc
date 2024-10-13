@@ -1,0 +1,22 @@
+{
+    "name": "sebastian/almacen_mvc",
+    "description": "Proyecto de almacen",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "./",
+            "Controllers\\": "./controllers",
+            "Models\\": "./models",
+            "Classes\\": "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sebastian",
+            "email": "jchingapalacios05@gmail.com"
+        }
+    ],
+    "require": {
+        "intervention/image": "^2.7",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
