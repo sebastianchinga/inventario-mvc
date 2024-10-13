@@ -63,9 +63,6 @@ $router->get('/contratos/actualizar', [ContratoController::class, 'actualizar'])
 $router->post('/contratos/actualizar', [ContratoController::class, 'actualizar']);
 $router->post('/contratos/eliminar', [ContratoController::class, 'eliminar']);
 
-// Tiempos
-// $router->get('/tiempos', []);
-
 // Servicios
 $router->get('/servicios', [ServicioController::class, 'index']);
 $router->get('/servicios/crear', [ServicioController::class, 'crear']);
