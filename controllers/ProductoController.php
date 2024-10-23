@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Dompdf\Dompdf;
 use Models\Producto;
 use MVC\Router;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -170,5 +171,72 @@ class ProductoController
                 }
             }
         }
+    }
+
+    public static function importar()
+    {
+        $productos = Producto::all();
+
+        // debuguear($src);
+
+        $dompdf = new Dompdf();
+
+        // Crear el HTML
+        $html = "<!DOCTYPE html>";
+        $html .= "<html>";
+        $html .= "<head>";
+        $html .= '<title>Descargar PDF</title>';
+        $html .= '<style>
+                    body { font-family: Arial, sans-serif; }
+                    table { width: 100%; border-collapse: collapse; }
+                    th, td { border: 1px solid #ddd; padding: 8px; }
+                    th { background-color: #f2f2f2; }
+                    h1 { text-align: center; }
+                  </style>';
+        $html .= "</head>";
+        $html .= "<body>";
+
+        // Agregar la imagen al PDF
+        // $html .= '';
+
+        $html .= "<h1>Categorías disponibles</h1>";
+        $html .= "<table>";
+        $html .= "<thead>";
+        $html .= "<tr>";
+        $html .= "<th>ID</th>";
+        $html .= "<th>Producto</th>";
+        $html .= "<th>Imágen</th>";
+        $html .= "<th>Precio</th>";
+        $html .= "</tr>";
+        $html .= "</thead>";
+        $html .= "<tbody>";
+        foreach ($productos as $producto) {
+            $imagePath = $_SERVER['DOCUMENT_ROOT'] . "/productosImagenes/$producto->imagen";
+
+            $imageData = base64_encode(file_get_contents($imagePath));
+            $src = 'data:image/png;base64,' . $imageData;
+
+            $html .= "<tr>";
+            $html .= "<td>" . $producto->id . "</td>";
+            $html .= "<td>" . $producto->producto . "</td>";
+            $html .= '<td><img src="' . $src . '" alt="Logo" style="display: block; margin: 0 auto; width: 150px;"/></td>';
+            $html .= '<td>S/. ' . $producto->precio . '</td>';
+            $html .= "</tr>";
+        }
+        $html .= "</tbody>";
+        $html .= "</table>";
+        $html .= "</body>";
+        $html .= "</html>";
+
+        // Cargar el HTML en DomPDF
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Renderizar el PDF
+        $dompdf->render();
+
+        // Mostrar el PDF en el navegador sin descargar automáticamente
+        $dompdf->stream("productos.pdf", ["Attachment" => false]);
     }
 }

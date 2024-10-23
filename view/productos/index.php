@@ -32,7 +32,7 @@
                 <div class="container-fluid">
                     <div>
                         <a href="/productos/crear" class="btn btn-primary mb-3">Agregar producto</a>
-                        <a href="" class="btn btn-danger mb-3">Importar pdf</a>
+                        <a href="/productos/importar" class="btn btn-danger mb-3" target="_blank">Importar pdf</a>
                     </div>
                     <?php if($alerta): ?>
                         <?php $mensaje = mostrarAlerta($alerta) ?>

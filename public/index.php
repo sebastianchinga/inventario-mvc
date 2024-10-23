@@ -8,6 +8,7 @@ use Controllers\EmpresaController;
 use Controllers\MarcaController;
 use Controllers\ProductoController;
 use Controllers\ServicioController;
+use Controllers\SucursalController;
 use MVC\Router;
 
 require __DIR__ . '/../includes/app.php';
@@ -27,6 +28,7 @@ $router->post('/productos/crear', [ProductoController::class, 'crear']);
 $router->get('/productos/actualizar', [ProductoController::class, 'actualizar']);
 $router->post('/productos/actualizar', [ProductoController::class, 'actualizar']);
 $router->post('/productos/eliminar', [ProductoController::class, 'eliminar']);
+$router->get('/productos/importar', [ProductoController::class, 'importar']);
 
 // Categorias
 $router->get('/categorias', [CategoriaController::class, 'index']);
@@ -36,6 +38,7 @@ $router->get('/categorias/actualizar', [CategoriaController::class, 'actualizar'
 $router->post('/categorias/actualizar', [CategoriaController::class, 'actualizar']);
 $router->post('/categorias/eliminar', [CategoriaController::class, 'eliminar']);
 $router->post('/categorias/cargar', [CategoriaController::class, 'cargar']);
+$router->get('/categorias/importar', [CategoriaController::class, 'importar']);
 
 // Empresas
 $router->get('/empresas', [EmpresaController::class, 'index']);
@@ -62,6 +65,7 @@ $router->post('/contratos/crear', [ContratoController::class, 'crear']);
 $router->get('/contratos/actualizar', [ContratoController::class, 'actualizar']);
 $router->post('/contratos/actualizar', [ContratoController::class, 'actualizar']);
 $router->post('/contratos/eliminar', [ContratoController::class, 'eliminar']);
+$router->get('/contratos/importar', [ContratoController::class, 'importar']);
 
 // Servicios
 $router->get('/servicios', [ServicioController::class, 'index']);
@@ -70,6 +74,9 @@ $router->post('/servicios/crear', [ServicioController::class, 'crear']);
 $router->get('/servicios/actualizar', [ServicioController::class, 'actualizar']);
 $router->post('/servicios/actualizar', [ServicioController::class, 'actualizar']);
 $router->post('/servicios/eliminar', [ServicioController::class, 'eliminar']);
+
+// Sucursales
+$router->get('/empresas-sucursal', [SucursalController::class, 'index']);
 
 // Perfil
 $router->get('/mi-perfil', [AuthController::class, 'perfil']);

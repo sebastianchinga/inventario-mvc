@@ -47,13 +47,14 @@ function validarID($url)
     $id = filter_var($id, FILTER_VALIDATE_INT);
 
     if (!$id) {
-        header("Location: /". $url);
+        header("Location: /" . $url);
     }
 
     return $id;
 }
 
-function Autenticar() {
+function Autenticar()
+{
     session_start();
     $nombre = $_SESSION['nombre'];
     $email = $_SESSION['email'];
@@ -62,4 +63,13 @@ function Autenticar() {
     if (is_null($auth)) {
         header('Location: /');
     }
+}
+
+function calcularFechas($fecha_vencimiento)
+{
+    $inicio = date_create('now');
+    $caducidad = date_create($fecha_vencimiento);
+    $diferencia = date_diff($inicio, $caducidad);
+    $dias = ($diferencia->days + 1);
+    return $dias;
 }

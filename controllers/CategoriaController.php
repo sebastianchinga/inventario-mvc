@@ -2,9 +2,9 @@
 
 namespace Controllers;
 
+use Dompdf\Dompdf;
 use Models\Categoria;
 use MVC\Router;
-// require __DIR__ . '/../includes/database.php';
 
 class CategoriaController
 {
@@ -155,5 +155,63 @@ class CategoriaController
 
             $i++;
         }
+    }
+
+    public static function importar()
+    {
+        $categorias = Categoria::all();
+
+        // debuguear($src);
+
+        $dompdf = new Dompdf();
+
+        // Crear el HTML
+        $html = "<!DOCTYPE html>";
+        $html .= "<html>";
+        $html .= "<head>";
+        $html .= '<title>Descargar PDF</title>';
+        $html .= '<style>
+                    body { font-family: Arial, sans-serif; }
+                    table { width: 100%; border-collapse: collapse; }
+                    th, td { border: 1px solid #ddd; padding: 8px; }
+                    th { background-color: #f2f2f2; }
+                    h1 { text-align: center; }
+                  </style>';
+        $html .= "</head>";
+        $html .= "<body>";
+
+        // Agregar la imagen al PDF
+        // $html .= '<img src="' . $src . '" alt="Logo" style="display: block; margin: 0 auto; width: 150px;"/>';
+
+        $html .= "<h1>Categorías disponibles</h1>";
+        $html .= "<table>";
+        $html .= "<thead>";
+        $html .= "<tr>";
+        $html .= "<th>ID</th>";
+        $html .= "<th>Categoría</th>";
+        $html .= "</tr>";
+        $html .= "</thead>";
+        $html .= "<tbody>";
+        foreach ($categorias as $categoria) {
+            $html .= "<tr>";
+            $html .= "<td>" . $categoria->id . "</td>";
+            $html .= "<td>" . $categoria->categoria . "</td>";
+            $html .= "</tr>";
+        }
+        $html .= "</tbody>";
+        $html .= "</table>";
+        $html .= "</body>";
+        $html .= "</html>";
+
+        // Cargar el HTML en DomPDF
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Renderizar el PDF
+        $dompdf->render();
+
+        // Mostrar el PDF en el navegador sin descargar automáticamente
+        $dompdf->stream("categorias.pdf", ["Attachment" => false]);
     }
 }

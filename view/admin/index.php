@@ -44,13 +44,13 @@
                             <!-- /.info-box -->
                         </a>
                         <!-- /.col -->
-                        <a href="" class="col-12 col-sm-6 col-md-3">
+                        <a href="/empresas-sucursal" class="col-12 col-sm-6 col-md-3">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-network-wired"></i></span>
 
                                 <div class="info-box-content">
                                     <span class="info-box-text" style="color: black;">Sucursales</span>
-                                    <span class="info-box-number" style="color: black;">41,410</span>
+                                    <span class="info-box-number" style="color: black;"><?php echo $sucursales ?></span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>

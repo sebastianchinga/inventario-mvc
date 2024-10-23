@@ -31,6 +31,7 @@
             <div class="content">
                 <div class="container-fluid">
                     <a href="/contratos/crear" class="btn btn-primary mb-3">Nuevo contrato</a>
+                    <a href="/contratos/importar" target="_blank" class="btn btn-danger mb-3">Importar pdf</a>
                     <?php if ($alerta): ?>
                         <?php
                         $mensaje = mostrarAlerta($alerta); ?>
@@ -55,12 +56,7 @@
                                     <td><?php echo $contrato->cliente ?></td>
                                     <td><?php echo $contrato->inicio ?></td>
                                     <td><?php echo $contrato->caducidad ?></td>
-                                    <?php
-                                        $inicio = date_create('now');
-                                        $caducidad = date_create($contrato->caducidad);
-                                        $diferencia = date_diff($inicio, $caducidad);
-                                        $dias = $diferencia->days;
-                                    ?>
+                                    <?php $dias = calcularFechas($contrato->caducidad); ?>
                                     <td><?php echo $dias === 0 ? 'Contrato vencido' : $dias . " dias" ?></td>
                                     <td>
                                         <a href="/contratos/actualizar?id=<?php echo $contrato->id ?>" class="btn btn-warning btn-block">Editar</a>
