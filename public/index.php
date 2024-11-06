@@ -69,11 +69,13 @@ $router->get('/contratos/importar', [ContratoController::class, 'importar']);
 
 // Servicios
 $router->get('/servicios', [ServicioController::class, 'index']);
+$router->post('/servicios', [ServicioController::class, 'index']);
 $router->get('/servicios/crear', [ServicioController::class, 'crear']);
 $router->post('/servicios/crear', [ServicioController::class, 'crear']);
 $router->get('/servicios/actualizar', [ServicioController::class, 'actualizar']);
 $router->post('/servicios/actualizar', [ServicioController::class, 'actualizar']);
 $router->post('/servicios/eliminar', [ServicioController::class, 'eliminar']);
+// $router->post('/servicios/moneda', [ServicioController::class, 'moneda']);
 
 // Sucursales
 $router->get('/empresas-sucursal', [SucursalController::class, 'index']);

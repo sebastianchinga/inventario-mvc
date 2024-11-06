@@ -32,6 +32,21 @@
                 <div class="container-fluid">
                     <a href="/servicios/crear" class="btn btn-primary mb-3">Agregar servicio</a>
                     <a href="" class="btn btn-success mb-3" id="cargar">Subir datos</a>
+                    <a href="" class="btn btn-secondary mb-3" id="mostrarSeleccion">Seleccionar moneda</a>
+                    <form id="form-monedas" method="post" action="/servicios" class="">
+
+                        <div class="fom-group">
+                            <select name="monedas" id="" class="form-control mb-3">
+                                <option value="">--Seleeciona una moneda--</option>
+                                <?php foreach($monedas as $moneda): ?>
+                                    <option value="<?php echo $moneda->id ?>"><?php echo $moneda->moneda ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="submit" value="Seleccionar moneda" class="btn btn-primary btn-block">
+                        </div>
+                    </form>
                     <form action="/servicios/cargar" method="post" enctype="multipart/form-data" class="d-none" id="formulario-carga">
                         <div class="form-group">
                             <input type="file" name="archivo">
@@ -50,6 +65,9 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Servicio</th>
                                 <th scope="col">Precio</th>
+                                <?php if(!empty($monedaObj)): ?>
+                                    <th scope="col">Precio (<?php echo $monedaObj->moneda ?>)</th>
+                                <?php endif; ?>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -59,6 +77,9 @@
                                     <th scope="row"><?php echo $servicio->id ?></th>
                                     <td><?php echo $servicio->servicio ?></td>
                                     <td>S/ <?php echo $servicio->precio ?></td>
+                                    <?php if(!empty($monedaObj)): ?>
+                                        <td>No hay moneda</td>
+                                    <?php endif; ?>
                                     <td>
                                         <a href="/servicios/actualizar?id=<?php echo $servicio->id ?>" class="btn btn-warning btn-block">Editar</a>
                                         <form action="/servicios/eliminar" method="post">
@@ -90,5 +111,5 @@
     <script src="/build/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/build/dist/js/adminlte.min.js"></script>
-    <!-- <script src="/build/js/cargar.js"></script> -->
+    <script src="/build/js/cargar.js"></script>
 </body>

@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\Moneda;
 use Models\Servicio;
 use MVC\Router;
 
@@ -16,10 +17,19 @@ class ServicioController
         $alerta = filter_var($alerta, FILTER_VALIDATE_INT);
 
         $servicios = Servicio::all();
+        $monedas = Moneda::all();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['monedas'];
+            $monedaObj = Moneda::find($id);
+        }
+
         $router->render('services/index', [
             'servicios' => $servicios,
             'alerta' => $alerta,
-            'nombre' => $nombre
+            'nombre' => $nombre,
+            'monedas' => $monedas,
+            'monedaObj' => $monedaObj
         ]);
     }
 
