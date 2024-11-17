@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Models\Mantenimiento;
+use Models\Moneda;
 use Models\Servicio;
 use Models\Sucursal;
 use Models\Usuario;
@@ -19,6 +20,7 @@ class AdminController
         $mantenimientos = count(Mantenimiento::all());
         $sucursales = count(Sucursal::all());
         $servicios = count(Servicio::all());
+        $monedas = count(Moneda::all());
         $usuarios = count(Usuario::all());
 
         $router->render('admin/index', [
@@ -26,6 +28,7 @@ class AdminController
             'mantenimientos' => $mantenimientos,
             'sucursales' => $sucursales,
             'servicios' => $servicios,
+            'monedas' => $monedas,
             'usuarios' => $usuarios
         ]);
     }

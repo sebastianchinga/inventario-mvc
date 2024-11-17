@@ -73,3 +73,12 @@ function calcularFechas($fecha_vencimiento)
     $dias = ($diferencia->days + 1);
     return $dias;
 }
+
+function conversionMonedas($precio, $valor) {
+
+    $conversion = $precio * $valor;
+
+    return $conversion;
+    // return number_format($conversion, 2, ',', '.');
+
+}

@@ -21,7 +21,11 @@ class ServicioController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['monedas'];
-            $monedaObj = Moneda::find($id);
+            if ($id) {
+                $monedaObj = Moneda::find($id);
+                // debuguear($monedaObj);
+            }
+            
         }
 
         $router->render('services/index', [

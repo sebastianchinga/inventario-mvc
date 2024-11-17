@@ -66,7 +66,7 @@
                                 <th scope="col">Servicio</th>
                                 <th scope="col">Precio</th>
                                 <?php if(!empty($monedaObj)): ?>
-                                    <th scope="col">Precio (<?php echo $monedaObj->moneda ?>)</th>
+                                    <th scope="col">Precio (<?php echo $monedaObj->codigo ?>)</th>
                                 <?php endif; ?>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -76,9 +76,12 @@
                                 <tr>
                                     <th scope="row"><?php echo $servicio->id ?></th>
                                     <td><?php echo $servicio->servicio ?></td>
-                                    <td>S/ <?php echo $servicio->precio ?></td>
+                                    <td>$/ <?php echo $servicio->precio ?></td>
                                     <?php if(!empty($monedaObj)): ?>
-                                        <td>No hay moneda</td>
+                                        <?php 
+                                            $montoConvertido = conversionMonedas($servicio->precio, $monedaObj->valor);
+                                        ?>
+                                        <td><?php echo $monedaObj->simbolo . '/ ' . number_format($montoConvertido, 2, '.') ?></td>
                                     <?php endif; ?>
                                     <td>
                                         <a href="/servicios/actualizar?id=<?php echo $servicio->id ?>" class="btn btn-warning btn-block">Editar</a>
