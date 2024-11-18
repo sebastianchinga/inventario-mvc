@@ -6,6 +6,7 @@ use Controllers\CategoriaController;
 use Controllers\ContratoController;
 use Controllers\EmpresaController;
 use Controllers\MarcaController;
+use Controllers\MonedaController;
 use Controllers\ProductoController;
 use Controllers\ServicioController;
 use Controllers\SucursalController;
@@ -75,10 +76,17 @@ $router->post('/servicios/crear', [ServicioController::class, 'crear']);
 $router->get('/servicios/actualizar', [ServicioController::class, 'actualizar']);
 $router->post('/servicios/actualizar', [ServicioController::class, 'actualizar']);
 $router->post('/servicios/eliminar', [ServicioController::class, 'eliminar']);
-// $router->post('/servicios/moneda', [ServicioController::class, 'moneda']);
 
 // Sucursales
 $router->get('/empresas-sucursal', [SucursalController::class, 'index']);
+
+// Monedas
+$router->get('/monedas', [MonedaController::class, 'index']);
+$router->get('/monedas/crear', [MonedaController::class, 'crear']);
+$router->post('/monedas/crear', [MonedaController::class, 'crear']);
+$router->get('/monedas/actualizar', [MonedaController::class, 'actualizar']);
+$router->post('/monedas/actualizar', [MonedaController::class, 'actualizar']);
+$router->post('/monedas/eliminar', [MonedaController::class, 'eliminar']);
 
 // Perfil
 $router->get('/mi-perfil', [AuthController::class, 'perfil']);

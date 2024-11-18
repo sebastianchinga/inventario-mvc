@@ -17,14 +17,8 @@ class ProductoController
     {
         $productos = Producto::all();
 
-        session_start();
+        Autenticar();
         $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
-        $auth = $_SESSION['login'] ?? null;
-
-        if (is_null($auth)) {
-            header('Location: /');
-        }
 
         $alerta = $_GET['alerta'];
         $alerta = filter_var($alerta, FILTER_VALIDATE_INT);
@@ -40,14 +34,8 @@ class ProductoController
     {
         $alertas = [];
 
-        session_start();
+        Autenticar();
         $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
-        $auth = $_SESSION['login'] ?? null;
-
-        if (is_null($auth)) {
-            header('Location: /');
-        }
 
         $producto = new Producto();
         $categorias = Categoria::all();
@@ -98,14 +86,8 @@ class ProductoController
 
     public static function actualizar(Router $router)
     {
-        session_start();
         $nombre = $_SESSION['nombre'];
-        $email = $_SESSION['email'];
-        $auth = $_SESSION['login'] ?? null;
-
-        if (is_null($auth)) {
-            header('Location: /');
-        }
+        Autenticar();
 
         $id = validarID('productos');
         $producto = Producto::find($id);

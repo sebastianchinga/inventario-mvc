@@ -30,7 +30,7 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <a href="/categorias" class="btn btn-danger my-3">Volver</a>
+                    <a href="/categorias" class="btn btn-danger mb-3">Volver</a>
                     <form id="quickForm" method="post">
 
                         <?php include __DIR__ . '/formulario.php' ?>
@@ -58,4 +58,5 @@
     <script src="/build/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/build/dist/js/adminlte.min.js"></script>
+    <script src="/build/js/cargar.js"></script>
 </body>

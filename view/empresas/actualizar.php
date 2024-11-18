@@ -30,7 +30,7 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <a href="/empresas" class="btn btn-danger my-3">Volver</a>
+                    <a href="/empresas" class="btn btn-danger mb-3">Volver</a>
                     <?php include __DIR__ . '/../templates/alertas.php' ?>
                     <form id="quickForm" method="post">
 

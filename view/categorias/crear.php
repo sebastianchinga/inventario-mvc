@@ -30,7 +30,7 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <a href="/categorias" class="btn btn-danger my-3">Volver</a>
+                    <a href="/categorias" class="btn btn-danger mb-3">Volver</a>
                     <form id="quickForm" method="post" action="/categorias/crear">
 
                         <?php include __DIR__ . '/formulario.php' ?>

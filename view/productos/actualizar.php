@@ -31,7 +31,7 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <a href="/productos" class="btn btn-danger my-2">Volver</a>
+                    <a href="/productos" class="btn btn-danger mb-2">Volver</a>
                     <?php include __DIR__ . '/../templates/alertas.php' ?>
                     <form id="quickForm" enctype="multipart/form-data" method="post">
 

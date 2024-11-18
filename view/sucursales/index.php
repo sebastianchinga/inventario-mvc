@@ -49,9 +49,9 @@
                         <?php foreach ($empresas as $empresa): ?>
                             <div class="col-md-3">
                                 <div class="card bg-gradient-secunday collapsed-card">
+
                                     <div class="card-header">
                                         <h3 class="card-title"><?php echo $empresa->empresa ?></h3>
-
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                                 <i class="fas fa-plus"></i>
@@ -61,6 +61,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
+                                        <p>RUC: <span><?php echo $empresa->ruc ?></span></p>
                                         <a href="/sucursal" class="btn btn-success">Ver sucursales</a>
                                     </div>
                                     <!-- /.card-body -->

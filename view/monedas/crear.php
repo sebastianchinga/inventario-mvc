@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Nuevo producto</h1>
+                            <h1 class="m-0">Nueva moneda</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -30,13 +30,13 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <a href="/productos" class="btn btn-danger mb-2">Volver</a>
+                    <a href="/monedas" class="btn btn-danger mb-2">Volver</a>
                     <?php include __DIR__ . '/../templates/alertas.php' ?>
-                    <form id="quickForm" enctype="multipart/form-data" method="post" action="/productos/crear">
+                    <form id="quickForm" method="post" action="/monedas/crear">
 
                         <?php include __DIR__ . '/formulario.php' ?>
                         <div class="form-group mb-3">
-                            <input type="submit" value="Guardar producto" class="btn btn-primary btn-block">
+                            <input type="submit" value="Guardar moneda" class="btn btn-primary btn-block">
                         </div>
                     </form>
                 </div><!-- /.container-fluid -->
