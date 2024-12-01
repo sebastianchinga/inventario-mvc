@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Sucursales</h1>
+                            <h1 class="m-0">Empresas</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -30,13 +30,6 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <a href="/sucursal/crear" class="btn btn-primary mb-3">Agregar sucursal</a>
-                    <?php if ($alerta): ?>
-                        <?php
-                        $mensaje = mostrarAlerta($alerta); ?>
-                        <div class="alert alert-success"><?php echo $mensaje ?></div>
-                        <?php ?>
-                    <?php endif; ?>
 
                     <div class="row">
                         <?php foreach ($sucursales as $sucursal): ?>
@@ -54,7 +47,7 @@
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
-                                        <a href="">Ver empresas</a>
+                                        <a href="/sucursal-empresas?nombre=<?php echo $sucursal->provincia ?>" class="btn btn-success">Ver sucursales</a>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>

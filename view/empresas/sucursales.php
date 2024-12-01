@@ -14,7 +14,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Empresas</h1>
+                            <h1 class="m-0">Sucursales de la empresa: <?php echo $empresa->empresa  ?></h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -30,41 +30,27 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container-fluid">
-                    <a href="/empresas/crear" class="btn btn-primary mb-3">Agregar empresa</a>
-                    <a href="" class="btn btn-success mb-3" id="cargar">Subir datos</a>
-                    <form action="/empresas/cargar" method="post" enctype="multipart/form-data" class="d-none" id="formulario-carga">
-                        <div class="form-group">
-                            <input type="file" name="archivo">
-                        </div>
-                        <input type="submit" value="Cargar" class="btn btn-primary btn-block mb-3">
-                    </form>
-                    <?php if ($alerta): ?>
-                        <?php
-                        $mensaje = mostrarAlerta($alerta); ?>
-                            <div class="alert alert-success"><?php echo $mensaje ?></div>
-                        <?php ?>
-                    <?php endif; ?>
+                    <a href="/empresas" class="btn btn-danger mb-3">Volver</a>
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Empresa</th>
-                                <th scope="col">RUC</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col">Provincia</th>
+                                <th scope="col">Dirección</th>
+                                <th scope="col">Accion</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($empresas as $empresa): ?>
+                            <?php foreach ($sucursales as $sucursal): ?>
                                 <tr>
-                                    <th scope="row"><?php echo $empresa->id ?></th>
-                                    <td><?php echo $empresa->empresa ?></td>
-                                    <td><?php echo $empresa->ruc ?></td>
+                                    <th scope="row"><?php echo $sucursal->id ?></th>
+                                    <td><?php echo $sucursal->provincia ?></td>
+                                    <td><?php echo $sucursal->direccion ?></td>
                                     <td>
-                                        <a href="/empresas/actualizar?id=<?php echo $empresa->id ?>" class="btn btn-warning btn-block">Editar</a>
-                                        <a href="/empresas/sucursal?id=<?php echo $empresa->id ?>" class="btn btn-info btn-block">Ver sucursales</a>
-                                        <form action="/empresas/eliminar" method="post">
-                                            <input type="hidden" name="id" value="<?php echo $empresa->id ?>">
-                                            <input type="submit" value="Eliminar" class="btn btn-danger btn-block mt-2">
+                                        <a href="/sucursal/actualizar?id=<?php echo $sucursal->id ?>" class="btn btn-warning mb-2 btn-block">Editar sucursal</a>
+                                        <form action="/sucursal" method="post">
+                                            <input type="hidden" name="id" value="<?php echo $sucursal->id ?>">
+                                            <input type="submit" value="Eliminar" class="btn btn-danger btn-block">
                                         </form>
                                     </td>
                                 </tr>

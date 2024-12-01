@@ -32,7 +32,8 @@
                 <div class="container-fluid">
                     <a href="/servicios/crear" class="btn btn-primary mb-3">Agregar servicio</a>
                     <a href="" class="btn btn-success mb-3" id="cargar">Subir datos</a>
-                    <a href="" class="btn btn-secondary mb-3" id="mostrarSeleccion">Seleccionar moneda</a>
+
+                    <!-- Formulario para seleccionar moneda -->
                     <form id="form-monedas" method="post" action="/servicios" class="">
 
                         <div class="fom-group">
@@ -47,12 +48,15 @@
                             <input type="submit" value="Seleccionar moneda" class="btn btn-primary btn-block">
                         </div>
                     </form>
+
+                    <!-- Formulario para subir un archivo -->
                     <form action="/servicios/cargar" method="post" enctype="multipart/form-data" class="d-none" id="formulario-carga">
                         <div class="form-group">
                             <input type="file" name="archivo">
                         </div>
                         <input type="submit" value="Cargar" class="btn btn-primary btn-block mb-3">
                     </form>
+                    
                     <?php if ($alerta): ?>
                         <?php
                         $mensaje = mostrarAlerta($alerta); ?>

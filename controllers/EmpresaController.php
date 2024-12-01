@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Models\Empresa;
+use Models\Sucursal;
 use MVC\Router;
 
 class EmpresaController
@@ -41,7 +42,6 @@ class EmpresaController
                     header('Location: /empresas?alerta=1');
                 }
             }
-
         }
 
         $alertas = Empresa::getAlertas();
@@ -85,7 +85,8 @@ class EmpresaController
         ]);
     }
 
-    public static function eliminar() {
+    public static function eliminar()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
             $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -102,7 +103,8 @@ class EmpresaController
         }
     }
 
-    public static function cargar() {
+    public static function cargar()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $type = $_FILES['archivo']['type'];
             $size = $_FILES['archivo']['size'];
@@ -117,7 +119,7 @@ class EmpresaController
             // debuguear($lineas);
             if ($i != 0) {
                 $datos = explode(";", $linea);
-                
+
                 // $empresa = !empty($datos[0]) ? ($datos[0]) : '';
                 // $ruc = !empty($datos[1]) ? ($datos[1]) : '';
 
@@ -139,5 +141,24 @@ class EmpresaController
             }
             $i++;
         }
+    }
+
+    public static function sucursal(Router $router)
+    {
+        Autenticar();
+        $nombre = $_SESSION['nombre']; // Nombre del usuario con sesion iniciada
+        $id = $_GET['id']; // ID de la empresa
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+        // Trae las sucursales de una empresa en especifico
+        $query = "SELECT * FROM sucursales WHERE empresas_id = " . $id;
+        $sucursales = Sucursal::consultarSQL($query);
+        // Trae la informacion de la empresa
+        $nombreEmpresa = Empresa::find($id);
+
+        $router->render('empresas/sucursales', [
+            'nombre' => $nombre,
+            'sucursales' => $sucursales,
+            'empresa' => $nombreEmpresa
+        ]);
     }
 }

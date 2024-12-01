@@ -49,6 +49,7 @@ $router->get('/empresas/actualizar', [EmpresaController::class, 'actualizar']);
 $router->post('/empresas/actualizar', [EmpresaController::class, 'actualizar']);
 $router->post('/empresas/eliminar', [EmpresaController::class, 'eliminar']);
 $router->post('/empresas/cargar', [EmpresaController::class, 'cargar']);
+$router->get('/empresas/sucursal', [EmpresaController::class, 'sucursal']);
 
 // Marcas
 $router->get('/marcas', [MarcaController::class, 'index']);
@@ -78,7 +79,11 @@ $router->post('/servicios/actualizar', [ServicioController::class, 'actualizar']
 $router->post('/servicios/eliminar', [ServicioController::class, 'eliminar']);
 
 // Sucursales
-$router->get('/empresas-sucursal', [SucursalController::class, 'index']);
+$router->get('/sucursales', [SucursalController::class, 'index']);
+$router->get('/sucursal/crear', [SucursalController::class, 'crear']);
+$router->post('/sucursal/crear', [SucursalController::class, 'crear']);
+$router->get('/sucursal/actualizar', [SucursalController::class, 'actualizar']);
+$router->post('/sucursal/actualizar', [SucursalController::class, 'actualizar']);
 
 // Monedas
 $router->get('/monedas', [MonedaController::class, 'index']);

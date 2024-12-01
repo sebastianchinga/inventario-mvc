@@ -8,26 +8,17 @@ function iniciarApp() {
 
 function mostrarFormulario() {
 
-    const formularios = document.querySelectorAll('#form-monedas,#formulario-carga');
-    
+    const formulario = document.querySelector('#formulario-carga');
     
     const boton = document.querySelector('#cargar');
-    const formulario = document.querySelector('#formulario-carga');
-    const btnMoneda = document.querySelector('#mostrarSeleccion');
-    const formMonedas = document.querySelector('#form-monedas');
-    // boton.addEventListener('click', function(e) {
-    //     e.preventDefault();
+    boton.addEventListener('click', function(e) {
+        e.preventDefault();
 
-    //     // showForm(formulario);
-    // });
-    formularios.forEach(f => {
-        if (!f.classList.contains('d-none')) {
-            console.log('Está oculto');
-        }
+        showForm(formulario);
     });
 
 }
 
-// function showForm(form) {
-//     form.classList.toggle('d-none');
-// }
+function showForm(form) {
+    form.classList.toggle('d-none');
+}

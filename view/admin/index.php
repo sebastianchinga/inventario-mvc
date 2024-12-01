@@ -44,7 +44,7 @@
                             <!-- /.info-box -->
                         </a>
                         <!-- /.col -->
-                        <a href="/empresas-sucursal" class="col-12 col-sm-6 col-md-3">
+                        <a href="/sucursales" class="col-12 col-sm-6 col-md-3">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-network-wired"></i></span>
 
