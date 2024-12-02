@@ -97,4 +97,10 @@ $router->post('/monedas/eliminar', [MonedaController::class, 'eliminar']);
 $router->get('/mi-perfil', [AuthController::class, 'perfil']);
 $router->post('/mi-perfil', [AuthController::class, 'perfil']);
 
+// Nuevo usuario
+$router->get('/nuevo-usuario', [AuthController::class, 'registro']);
+
+// Listar usuarios
+$router->get('/usuarios', [AuthController::class, 'usuarios']);
+
 $router->comprobarRutas();

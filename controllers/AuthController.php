@@ -8,6 +8,23 @@ use MVC\Router;
 class AuthController
 {
 
+    public static function registro() {
+        $nombre = 'Ramses';
+        $email = 'jchingapalacios05@gmail.com';
+        $password = 'admin';
+
+        $usuario = new Usuario();
+        $usuario->setData($nombre, $email, $password);
+        $usuario->hashearPassword();
+
+        $resultado = $usuario->guardar();
+
+        if ($resultado) {
+            header('Location: /');
+        }
+
+    }
+
     public static function login(Router $router)
     {
 
@@ -80,6 +97,16 @@ class AuthController
         $router->render('perfil/index', [
             'usuario' => $usuario,
             'alerta' => $alerta,
+            'nombre' => $nombre
+        ]);
+    }
+
+    public static function usuarios(Router $router) {
+        Autenticar();
+        $nombre = $_SESSION['nombre'];
+        $usuarios = Usuario::all();
+        $router->render('auth/usuarios', [
+            'usuarios' => $usuarios,
             'nombre' => $nombre
         ]);
     }

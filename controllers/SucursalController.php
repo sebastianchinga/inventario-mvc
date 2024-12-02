@@ -80,7 +80,7 @@ class SucursalController
 
                 if ($resultado) {
                     // Si se efectuó la consulta, redirigir a la URL anterior
-                    header("Location: /empresas/sucursal?id=". $id);
+                    header("Location: /empresas");
                 }
             }
         }

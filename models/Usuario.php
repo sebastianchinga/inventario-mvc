@@ -21,6 +21,13 @@ class Usuario extends ActiveRecord
         $this->password = $args['password'] ?? '';
     }
 
+    public function setData($nombre, $email, $password) {
+        $this->id = null;
+        $this->nombre = $nombre;
+        $this->email = $email;
+        $this->password = $password;
+    }
+
     public function validar()
     {
         if (!$this->email) {
