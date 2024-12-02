@@ -32,6 +32,7 @@
                 <div class="container-fluid">
                     <a href="/servicios/crear" class="btn btn-primary mb-3">Agregar servicio</a>
                     <a href="" class="btn btn-success mb-3" id="cargar">Subir datos</a>
+                    <a href="" class="btn btn-secondary mb-3" id="monedas">Seleccionar monedas</a>
 
                     <!-- Formulario para seleccionar moneda -->
                     <form id="form-monedas" method="post" action="/servicios" class="">
