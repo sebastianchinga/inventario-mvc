@@ -9,8 +9,8 @@ class AuthController
 {
 
     public static function registro() {
-        $nombre = 'Ramses';
-        $email = 'jchingapalacios05@gmail.com';
+        $nombre = 'Juan Sebastian';
+        $email = 'marcochinga@gmail.com';
         $password = 'admin';
 
         $usuario = new Usuario();
@@ -91,6 +91,7 @@ class AuthController
 
             if ($resultado) {
                 header('Location: /mi-perfil?alerta=1');
+                header('Location: /cerrar');
             }
         }
 
